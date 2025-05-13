@@ -1,0 +1,94 @@
+<div class="predict-delay-card">
+  <h2>⏳ Predict Payment Delay</h2>
+
+  <form (ngSubmit)="onSubmit()" #form="ngForm">
+    <div *ngFor="let key of objectKeys(formData)" class="form-group">
+      <label>{{ key.replaceAll('_', ' ') }} :</label>
+
+      <!-- DayOfWeek -->
+      <ng-container *ngIf="key === 'DayOfWeek'; else otherInputs">
+        <select [(ngModel)]="formData[key]" name="{{ key }}" required class="form-control" #input="ngModel">
+          <option value="" disabled selected>Select a day</option>
+          <option *ngFor="let day of dayOfWeekOptions" [value]="day">{{ day }}</option>
+        </select>
+        <div *ngIf="input.invalid && (input.dirty || input.touched)" class="error-message">
+          Please select a day between 1 and 7.
+        </div>
+      </ng-container>
+
+      <!-- Template for others -->
+      <ng-template #otherInputs>
+
+        <!-- WeekOfYear -->
+        <ng-container *ngIf="key === 'WeekOfYear'; else checkIsWeekend">
+          <input
+            type="number"
+            [(ngModel)]="formData[key]"
+            name="{{ key }}"
+            required min="1" max="53"
+            class="form-control"
+            #input="ngModel"
+          />
+          <div *ngIf="input.invalid && (input.dirty || input.touched)" class="error-message">
+            Week must be between 1 and 53.
+          </div>
+        </ng-container>
+
+        <!-- IsWeekend -->
+        <ng-template #checkIsWeekend>
+          <ng-container *ngIf="key === 'IsWeekend'; else checkMonth">
+            <select [(ngModel)]="formData[key]" name="{{ key }}" required class="form-control" #input="ngModel">
+              <option value="" disabled selected>Is weekend?</option>
+              <option [value]="0">0</option>
+              <option [value]="1">1</option>
+            </select>
+            <div *ngIf="input.invalid && (input.dirty || input.touched)" class="error-message">
+              Choose 0 (No) or 1 (Yes).
+            </div>
+          </ng-container>
+        </ng-template>
+
+        <!-- Month -->
+        <ng-template #checkMonth>
+          <ng-container *ngIf="key === 'Month'; else defaultInput">
+            <select [(ngModel)]="formData[key]" name="{{ key }}" required class="form-control" #input="ngModel">
+              <option value="" disabled selected>Select month</option>
+              <option *ngFor="let m of monthOptions" [value]="m">{{ m }}</option>
+            </select>
+            <div *ngIf="input.invalid && (input.dirty || input.touched)" class="error-message">
+              Month must be between 1 and 12.
+            </div>
+          </ng-container>
+        </ng-template>
+
+        <!-- Default -->
+        <ng-template #defaultInput>
+          <input
+            type="number"
+            [(ngModel)]="formData[key]"
+            name="{{ key }}"
+            required min="0"
+            class="form-control"
+            #input="ngModel"
+          />
+          <div *ngIf="input.invalid && (input.dirty || input.touched)" class="error-message">
+            Please enter a valid positive number.
+          </div>
+        </ng-template>
+      </ng-template>
+    </div>
+
+    <button type="submit" [disabled]="form.invalid">Predict</button>
+  </form>
+
+  <div *ngIf="result" class="result">
+    <p [style.color]="result.Prediction === 1 ? 'red' : 'limegreen'">
+      {{ result.Prediction === 1 ? '⚠️ Predicted Late Payment' : '✅ Predicted On-Time Payment' }}
+    </p>
+    <p>Probability: {{ result.Proba_Late * 100 | number:'1.2-2' }}%</p>
+  </div>
+
+  <div *ngIf="error" class="error">
+    ⚠️ {{ error }}
+  </div>
+</div>

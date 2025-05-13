@@ -1,0 +1,47 @@
+<div class="login-wrapper">
+  <div class="circle-container" id="circle"></div>
+
+  <div class="login-box">
+    <h2>Login</h2>
+
+    <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+      <!-- Champ Username -->
+      <label for="username">Username</label>
+      <input
+        [(ngModel)]="username"
+        name="username"
+        id="username"
+        type="email"
+        placeholder="admin@Monoprix"
+        required />
+
+      <!-- Champ Password -->
+      <label for="password">password</label>
+      <input
+        [(ngModel)]="password"
+        name="password"
+        id="password"
+        type="password"
+        placeholder="••••••••"
+        required />
+
+      <!-- Message d'erreur -->
+      <div *ngIf="errorMessage" class="error">
+        {{ errorMessage }}
+      </div>
+
+      <!-- Bouton Se connecter -->
+      <button type="submit" class="glow-btn">Get Started</button>
+
+      <!-- Liens secondaires -->
+      <div class="links">
+        <a href="#" class="forgot-link"> Forgotten password?</a>
+        <!-- Bouton Retour à l'accueil -->
+<button type="button" class="back-btn" (click)="goToWelcome()">← Back to home</button>
+
+      </div>
+    </form>
+  </div>
+
+
+</div>

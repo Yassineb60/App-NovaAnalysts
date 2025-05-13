@@ -1,0 +1,32 @@
+<div class="litige-container">
+  <h2>🗂️ Prédire le Cluster d'un Litige</h2>
+
+  <!-- 🔽 Choisir le Status -->
+  <div class="form-group">
+    <label>Status du litige :</label>
+    <select [(ngModel)]="statusInput" class="form-control">
+      <option value="" disabled selected>Choisir un statut</option>
+      <option value="Ouvert">Ouvert</option>
+      <option value="Fermé">Fermé</option>
+    </select>
+  </div>
+
+  <!-- 🔽 Choisir la Reason -->
+  <div class="form-group">
+    <label>Raison du litige :</label>
+    <select [(ngModel)]="reasonInput" class="form-control">
+      <option value="" disabled selected>Choisir une raison</option>
+      <option *ngFor="let reason of reasonOptions" [value]="reason">{{ reason }}</option>
+    </select>
+  </div>
+
+  <button class="btn" (click)="predictCluster()">Prédire</button>
+
+  <div *ngIf="clusterResult !== null" class="result">
+    <p>✅ Résultat : Cluster <strong>{{ clusterResult }}</strong></p>
+  </div>
+
+  <div *ngIf="errorMessage" class="error">
+    ❌ {{ errorMessage }}
+  </div>
+</div>

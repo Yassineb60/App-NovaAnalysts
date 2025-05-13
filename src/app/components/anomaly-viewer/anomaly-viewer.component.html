@@ -1,0 +1,60 @@
+<div class="anomalie-container">
+  <h2 class="title-section">📊 Liste des Produits</h2>
+
+  <button class="btn-toggle" (click)="toggleView()">
+    {{ showAnomaliesOnly ? 'Afficher tous les produits' : 'Afficher les anomalies uniquement' }}
+  </button>
+
+  <table class="product-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Prix</th>
+        <th>Note</th>
+        <th>Reviews</th>
+        <th>Détection</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of displayedProducts">
+        <td>{{ p.ProductIDFK }}</td>
+        <td>{{ p.Price }}</td>
+        <td>{{ p.ReviewScore }}</td>
+        <td>{{ p.ReviewCount }}</td>
+        <td>
+          <span [ngClass]="p.IForest == -1 ? 'badge-anomalie' : 'badge-normal'">
+            {{ p.IForest == -1 ? '⚠️ Anomalie' : '✅ Normal' }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="btn-center">
+    <button class="btn-load" (click)="loadMore()" *ngIf="displayLimit < products.length">Voir plus</button>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- ✅ Vérification manuelle stylée -->
+  <h3 class="form-title">🔍 Vérifier un produit manuellement</h3>
+
+  <form (ngSubmit)="checkProductAnomaly()" #form="ngForm" class="form-grid">
+    <label for="price">Prix :</label>
+    <input type="number" [(ngModel)]="productInput.Price" name="price" id="price" placeholder="Prix" required>
+
+    <label for="note">Note :</label>
+    <input type="number" [(ngModel)]="productInput.ReviewScore" name="score" id="note" placeholder="Note" required>
+
+    <label for="reviews">Reviews :</label>
+    <input type="number" [(ngModel)]="productInput.ReviewCount" name="count" id="reviews" placeholder="Reviews" required>
+
+    <button type="submit" class="btn-verify">Vérifier</button>
+  </form>
+
+  <div *ngIf="modelResult" class="result-box">
+    <p *ngIf="modelResult.Anomaly === 1" class="result-anomalie">⚠️ Ce produit est une <u>anomalie</u></p>
+    <p *ngIf="modelResult.Anomaly === 0" class="result-normal">✅ Ce produit est <u>normal</u></p>
+    <p class="result-score">Score du modèle : {{ modelResult.Score }}</p>
+  </div>
+</div>

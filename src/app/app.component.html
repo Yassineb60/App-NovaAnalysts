@@ -1,0 +1,59 @@
+<!-- Monoprix Dashboard Sidebar -->
+<!-- Welcome Sidebar -->
+<div class="app-container" *ngIf="isWelcomePage()">
+  <aside class="sidebar welcome-sidebar">
+    <div class="sidebar-title2"></div>
+    <nav class="nav-links3">
+
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>
+
+<div class="app-container" *ngIf="showSidebar() && !isWelcomePage() && !isAboutPage()">
+  <aside class="sidebar">
+    <div class="sidebar-title">Monoprix Dashboard</div>
+
+    <!-- Logo centré en petit format -->
+    <div class="sidebar-logo-container">
+      <img src="assets/3.png" alt="Logo Nova" class="sidebar-logo" />
+    </div>
+
+    <nav class="nav-links">
+      <a routerLink="/home" routerLinkActive="active"><span>🏠</span> Home</a>
+      <a routerLink="/anomalies" routerLinkActive="active"><span>📦</span> Anomalies Produits</a>
+      <a routerLink="/dashboards-home">📊 Dashboards</a>
+      <a routerLink="/predict-revenue" routerLinkActive="active"><span>📈</span> Prévision Revenu</a>
+      <a routerLink="/predict-delay" routerLinkActive="active"><span>⏳</span> Prédiction Retard</a>
+      <a routerLink="/forecast-errors" routerLinkActive="active"><span>📈</span> Invoices Erreurs</a>
+      <a routerLink="/litige" routerLinkActive="active"><span>🗂️</span> Cluster Litiges</a>
+      <a routerLink="/welcome" class="logout-link"><span>🚪</span> Logout</a>
+    </nav>
+
+  </aside>
+
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>
+
+<!-- About Sidebar -->
+<div class="app-container" *ngIf="isAboutPage()">
+  <aside class="sidebar invisible-sidebar">
+    <nav class="nav-links">
+      <a routerLink="/welcome" routerLinkActive="active" class="about-btn">← Back to Welcome</a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>
+
+<!-- Pages without sidebar -->
+<div *ngIf="!showSidebar() && !isWelcomePage() && !isAboutPage()">
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,125 @@
+<div class="welcome-wrapper">
+  <!-- NAVBAR -->
+  <header class="welcome-header">
+    <div class="logo-container">
+      <img src="assets/logo-nova.png" class="logo" alt="Nova Analysts Logo" />
+      <span class="brand-name">Nova Analysts</span>
+    </div>
+    <nav class="nav">
+      <a routerLink="/login" class="nav-btn">Login</a>
+      <a routerLink="/about" class="nav-btn">About As</a>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <main class="hero-section hero-flex">
+    <div class="hero-left">
+      <h1 class="glow-title">Transforming <span>Data</span> into <span>Intelligence</span></h1>
+      <p>
+        Nova Analysts empowers finance teams by integrating Artificial Intelligence and Business Intelligence
+        to optimize payments, detect fraud, and drive real-time decisions.
+      </p>
+      <div class="cta-buttons">
+        <button routerLink="/login" class="explore-btn">
+            Explore Now </button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="assets/logo-nova.png" class="hero-logo" alt="Nova Logo" />
+    </div>
+  </main>
+
+  <section class="partner-section">
+    <h2 class="partner-title">Our Partner</h2>
+    <p class="partner-subtitle">
+      Proud to empower industry leaders through data &amp; intelligence
+    </p>
+    <div class="partner-logo-wrapper">
+      <img src="assets/2.png" alt="Monoprix Logo" class="partner-logo" />
+    </div>
+  </section>
+
+
+
+  <!-- FEATURES SECTION -->
+  <div class="section-wrapper">
+    <section class="features-section">
+      <h2>What makes Nova Analysts powerful?</h2>
+      <p>Get control with AI so there’s less work for employees, more accuracy in your data, and better financial visibility. Here’s how:</p>
+      <div class="feature-boxes">
+        <div class="feature-box">
+          <span>🤖</span>
+          <strong>AI does the work</strong><br />
+          Intelligent tech like AI and ML handles the heavy lifting—less work for employees and more precision in your numbers.
+        </div>
+        <div class="feature-box">
+          <span>🪙</span>
+          <strong>Smart spending control</strong><br />
+          Employees get simple rules. You get visibility and peace of mind with total spending control.
+        </div>
+        <div class="feature-box">
+          <span>⚙️</span>
+          <strong>No setup headaches</strong><br />
+          With Nova Analysts, there’s no need for complicated configuration. It just works—right out of the box.
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- LINKEDIN QR SECTION -->
+  <div class="section-wrapper">
+    <section class="qr-section">
+      <h3>Our LinkedIn Page</h3>
+      <img src="assets/nova_analysts_linkedin_qr.png" alt="LinkedIn QR Code" class="qr-code" />
+    </section>
+  </div>
+
+  <!-- VISION SECTION -->
+  <div class="section-wrapper">
+    <section class="vision-section">
+      <h2>Our Vision</h2>
+      <p>
+        At Nova Analysts, we envision a future where finance teams are empowered by real-time data,
+        AI-driven decision-making, and automation that removes friction from daily operations.
+      </p>
+    </section>
+  </div>
+
+  <!-- TESTIMONIALS SECTION -->
+  <div class="section-wrapper">
+    <section class="testimonials-section">
+      <h2>What Our Clients Say</h2>
+      <div class="testimonial-card">
+        <p>“Nova Analysts transformed how we manage supplier payments. Their AI tools are fast, smart, and reliable.”</p>
+        <strong>– Finance Director, Monoprix</strong>
+      </div>
+      <div class="testimonial-card">
+        <p>“The insights we gained from Nova Analysts have been invaluable. We can now make data-driven decisions with confidence.”</p>
+        <strong>– CFO, Monoprix</strong>
+      </div>
+      </section>
+
+  </div>
+
+ <!-- CONTACT SECTION -->
+<div class="section-wrapper">
+  <section class="contact-section">
+    <h2>Contact Us</h2>
+    <p>Have questions or want to schedule a demo? Send us a message below.</p>
+
+    <form (ngSubmit)="saveContactMessage()" #contactForm="ngForm">
+      <input [(ngModel)]="contact.name" name="name" type="text" placeholder="Your Name" required />
+      <input [(ngModel)]="contact.email" name="email" type="email" placeholder="Your Email" required />
+      <textarea [(ngModel)]="contact.message" name="message" rows="4" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+</div>
+
+
+
+  <!-- FOOTER -->
+  <footer class="footer-section section-wrapper">
+    © 2025 Nova Analysts. All rights reserved.
+  </footer>
+</div>

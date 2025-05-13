@@ -1,0 +1,17 @@
+.role-switcher {
+  margin: 10px 15px;
+  padding: 10px;
+  background: #f2f2f2;
+  border-radius: 8px;
+}
+
+.role-switcher label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.role-switcher select {
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 4px;
+}

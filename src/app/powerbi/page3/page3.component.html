@@ -1,0 +1,15 @@
+<div class="bi-frame-container">
+  <iframe
+    [src]="powerBIUrl | safe"
+    width="100%"
+    height="800"
+    frameborder="0"
+    allowfullscreen
+  ></iframe>
+</div>
+
+<div class="powerbi-footer">
+  Power BI Report – Dashboard View
+</div>
+
+<button class="back-btn" (click)="goBack()">← Retour à l'accueil des Dashboards</button>

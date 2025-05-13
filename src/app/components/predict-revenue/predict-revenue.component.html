@@ -1,0 +1,31 @@
+<div class="revenue-container">
+  <h2 class="revenue-title">📈 Prédiction du Revenu</h2>
+
+  <form (ngSubmit)="onSubmit()" #form="ngForm" class="revenue-form">
+    <div class="form-line" *ngFor="let key of objectKeys(formData)">
+      <label>{{ key.replaceAll('_', ' ') }} :</label>
+      <input
+        type="number"
+        [(ngModel)]="formData[key]"
+        name="{{ key }}"
+        required
+        min="0"
+        #input="ngModel"
+        placeholder="0"
+      />
+      <div *ngIf="input.invalid && (input.dirty || input.touched)" class="error-message">
+        Champ requis et positif
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="form.invalid" class="glow-btn">Prévoir</button>
+  </form>
+
+  <div *ngIf="result !== null" class="result-glow">
+    ✅ Revenu prédit : <strong>{{ result }} €</strong>
+  </div>
+
+  <div *ngIf="error" class="error-glow">
+    ⚠️ {{ error }}
+  </div>
+</div>

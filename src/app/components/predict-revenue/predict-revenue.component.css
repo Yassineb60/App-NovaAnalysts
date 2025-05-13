@@ -1,0 +1,107 @@
+.revenue-container {
+  background-color: #050e2d;
+  border-radius: 16px;
+  padding: 40px;
+  margin: 50px auto;
+  width: 80%;
+  max-width: 800px;
+  box-shadow: 0 0 20px #00f0ff44;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.revenue-title {
+  color: #00f0ff;
+  text-shadow: 0 0 10px #00f0ff;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+.revenue-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-line {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #cccccc;
+  margin-bottom: 6px;
+}
+
+input {
+  background-color: #1a2540;
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  box-shadow: inset 0 0 8px #00f0ff33;
+  transition: 0.3s;
+  border: 1px solid #666;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 10px #00f0ff;
+}
+
+.error-message {
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+.glow-btn {
+  background: #00cfff;
+  color: black;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  box-shadow: 0 0 15px #00cfff;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+.glow-btn:disabled {
+  background: #555;
+  box-shadow: none;
+  cursor: not-allowed;
+  color: #999;
+}
+
+.glow-btn:hover:enabled {
+  transform: scale(1.05);
+  background: #02b1d9;
+}
+
+.result-glow {
+  background-color: #1b322f;
+  color: #2ecc71;
+  font-weight: bold;
+  padding: 12px;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #2ecc71;
+  text-align: center;
+}
+
+.error-glow {
+  background-color: #3e1e1e;
+  color: #ff4c4c;
+  font-weight: bold;
+  padding: 12px;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ff4c4c;
+  text-align: center;
+}
